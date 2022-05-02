@@ -112,3 +112,21 @@ const icons = [
 		color: 'blue'
 	}
 ];
+const container = document.querySelector(".container");
+icons.forEach(icon => {
+    container.append(generateBox(icon));
+});
+console.log(generateBox(icons[0]));
+function generateBox(icon) {
+    const box = document.createElement("div");
+    box.classList.add("box");
+    box.innerHTML = `
+    <div class="font-aw ${icon.color}">
+        <i class="${icon.family} ${icon.prefix}${icon.name}"></i>
+    </div>
+    <div class="name">
+        <span>${icon.name} </span>
+    </div>
+    `
+    return box;
+}
