@@ -117,6 +117,28 @@ icons.forEach(icon => {
     container.append(generateBox(icon));
 });
 console.log(generateBox(icons[0]));
+// bonus 
+const select = document.getElementById("filter");
+select.addEventListener("change", () => {
+    container.innerHTML = "";
+    if (select.value !== "all"){
+        const filted = icons.filter((icon) =>  {
+            return select.value === icon.type;
+        });
+
+        
+        filted.forEach(icon => {
+            container.append(generateBox(icon));
+        });
+    }
+    else {
+        icons.forEach(icon => {
+            container.append(generateBox(icon));
+        });
+    }
+}
+);
+
 function generateBox(icon) {
     const box = document.createElement("div");
     box.classList.add("box");
@@ -125,7 +147,7 @@ function generateBox(icon) {
         <i class="${icon.family} ${icon.prefix}${icon.name}"></i>
     </div>
     <div class="name">
-        <span>${icon.name} </span>
+        <span>${icon.name.toUpperCase()} </span>
     </div>
     `
     return box;

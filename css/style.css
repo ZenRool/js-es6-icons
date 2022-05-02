@@ -38,12 +38,13 @@ option {
 .container {
     height: calc(100vh - 100px);
     display: flex;
-    /* align-items: center; */
-    justify-content: space-evenly;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
 }
 /* box */
 .box {
+    margin: 0 10px;
     padding: 10px 0;
     height: calc((100vh - 100px)/4 - 30px);
     width: 330px;
@@ -56,5 +57,5 @@ option {
     font-size: 110px;
 }
 .name {
-    font-size: 40px;
+    font-size: 30px;
 }
