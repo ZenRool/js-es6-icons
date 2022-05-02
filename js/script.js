@@ -113,28 +113,20 @@ const icons = [
 	}
 ];
 const container = document.querySelector(".container");
-icons.forEach(icon => {
-    container.append(generateBox(icon));
-});
-console.log(generateBox(icons[0]));
+icons.forEach(appendBox);
 // bonus 
 const select = document.getElementById("filter");
 select.addEventListener("change", () => {
     container.innerHTML = "";
-    if (select.value !== "all"){
+    const selected = select.value;
+    if ( selected !== "all"){
         const filted = icons.filter((icon) =>  {
-            return select.value === icon.type;
+            return selected === icon.type;
         });
-
-        
-        filted.forEach(icon => {
-            container.append(generateBox(icon));
-        });
+        filted.forEach(appendBox);
     }
     else {
-        icons.forEach(icon => {
-            container.append(generateBox(icon));
-        });
+        icons.forEach(appendBox);
     }
 }
 );
@@ -151,4 +143,7 @@ function generateBox(icon) {
     </div>
     `
     return box;
+}
+function appendBox(icon) {
+    container.append(generateBox(icon));
 }
